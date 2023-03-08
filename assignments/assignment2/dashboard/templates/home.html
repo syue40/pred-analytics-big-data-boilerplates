@@ -1,0 +1,34 @@
+{% load static %}
+{% block content%}
+<body>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Implement Sticky Header and Footer with CSS</title>
+    <div class="fixed-header">
+        <b>Sean's COMP4949 Django Application</b>
+    </div>
+    <div class="container">
+        <form action="{% url 'homePost' %}" method="post">
+            {% csrf_token %}
+            <h3 id="dimensional-header">Dimensional Values</h3>
+            <!-- Show radio button list named 'choice' -->
+            {% for choice in labels %}
+            <div class="input-container">
+                <b><label for="choice{{ forloop.counter }}">{{ choice }}:</label></b><br>
+                <input type="text" name="{{ choice }}" id="choice{{ forloop.counter }}" value="0.0">
+            </div>
+            {% endfor %}
+            <!--Submit button is also contained in the form -->
+            <div id="submit-button">
+                <input type="submit" value="Submit for Evaluation" id="input-button" >
+            </div>
+            </form>
+    </div>
+    
+    <!-- End of form. -->
+    <!-- This error will notify the user if there are issues with the POST request -->
+    <div class="error-message">
+        {% if errorMessage %}<p><strong>{{errorMessage}}</strong></p>{% endif %}
+    </div>
+        
+</body>
+{% endblock content%}

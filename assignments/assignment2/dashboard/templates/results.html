@@ -1,0 +1,13 @@
+{% load static %}
+{% block content %}
+<body>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <div class="fixed-header">
+        <b>Your Results</b>
+    </div>
+    <div class="container">
+        Your diagnosis is: {{preds}}
+    </div>
+    
+</body>
+{% endblock content %}
